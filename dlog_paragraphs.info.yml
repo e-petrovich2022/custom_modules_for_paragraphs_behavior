@@ -1,0 +1,7 @@
+name: DLOG - Paragraphs
+description: Custom code for paragraphs enhancment.
+type: module
+package: dlog
+core: 8.x
+dependencies:
+  - paragraphs:paragraphs
