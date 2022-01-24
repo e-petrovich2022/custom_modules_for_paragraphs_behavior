@@ -4,6 +4,7 @@
 namespace Drupal\dlog_paragraphs\Plugin\paragraphs\Behavior;
 
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -29,7 +30,9 @@ class GalleryBehavior extends ParagraphsBehaviorBase {
   }
 
   public function view(array &$build, Paragraph $paragraph, EntityViewDisplayInterface $display, $view_mode) {
-
+    $images_per_row = $paragraph->getBehaviorSetting($this->getPluginId(), 'items_per_row', 4);
+    $bem_block = 'paragraph-' . $paragraph->bundle() . ($view_mode == 'default' ? '' : '-' . $view_mode) . '--images-per-row-' . $images_per_row;
+    $build['#attributes']['class'][] = Html::getClass($bem_block);
   }
 
   /**
@@ -44,6 +47,7 @@ class GalleryBehavior extends ParagraphsBehaviorBase {
         '3' => $this->formatPlural(3, '1 photo per row', '@count photos per row'),
         '4' => $this->formatPlural(4, '1 photo per row', '@count photos per row'),
       ],
+      '#default_value' => $paragraph->$paragraph->getBehaviorSetting($this->getPluginId(), 'items_per_row', 4),
     ];
 
     return $form;
