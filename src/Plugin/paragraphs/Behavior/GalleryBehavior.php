@@ -41,8 +41,8 @@ class GalleryBehavior extends ParagraphsBehaviorBase {
       '#title' => $this->t('Number of images per row'),
       '#options' => [
         '2' => $this->formatPlural(2, '1 photo per row', '@count photos per row'),
-        '2' => $this->formatPlural(3, '1 photo per row', '@count photos per row'),
-        '2' => $this->formatPlural(4, '1 photo per row', '@count photos per row'),
+        '3' => $this->formatPlural(3, '1 photo per row', '@count photos per row'),
+        '4' => $this->formatPlural(4, '1 photo per row', '@count photos per row'),
       ],
     ];
 
